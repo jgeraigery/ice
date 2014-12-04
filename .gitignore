@@ -1,0 +1,5 @@
+*.out
+ice.properties
+target/
+web-app/WEB-INF/tld/
+work/
