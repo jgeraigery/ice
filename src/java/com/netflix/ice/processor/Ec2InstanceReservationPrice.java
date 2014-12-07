@@ -232,7 +232,8 @@ public class Ec2InstanceReservationPrice {
         LIGHT,
         MEDIUM,
         HEAVY,
-        FIXED;
+        FIXED,
+        PARTIAL;
 
         public static ReservationUtilization get(String offeringType) {
             if (offeringType.indexOf(" ") > 0) {
