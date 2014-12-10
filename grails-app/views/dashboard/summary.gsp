@@ -30,9 +30,6 @@
       <td>Group By</td>
       <td>Account</td>
       <td>Region</td>
-      <td>Product</td>
-      <td>Operation</td>
-      <td>UsageType</td>
     </tr>
     <tr>
       <td class="metaTd">
@@ -46,6 +43,13 @@
         <select ng-model="selected_regions" ng-options="a.name for a in regions | filter:filter_regions" ng-change="regionsChanged()" multiple="multiple" class="metaRegions metaSelect"></select>
         <br><input ng-model="filter_regions" type="text" class="metaFilter" placeholder="filter">
       </td>
+      </tr>
+      <tr>
+        <td>Product</td>
+        <td>Operation</td>
+        <td>UsageType</td>
+      </tr>
+      <tr>
       <td class="metaTd">
         <select ng-model="selected_products" ng-options="a.name for a in products | filter:filter_products" ng-change="productsChanged()" multiple="multiple" class="metaProducts metaSelect"></select>
         <br><input ng-model="filter_products" type="text" class="metaFilter" placeholder="filter">
