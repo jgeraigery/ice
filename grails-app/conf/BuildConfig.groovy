@@ -121,6 +121,7 @@ grails.project.dependency.resolution = {
 
     plugins {
         build ":tomcat:$grailsVersion"
+        build ":standalone:1.3"
         compile ":standalone:1.3"
     }
 }
