@@ -11,7 +11,7 @@ img          { border: none; }
 .prod .titlebar .region   { background-color: #4e5d6c; }
 .titlebar span            { color: #ebebeb; font-size: 24px; font-family: helvetica, verdana, arial, sans-serif; }
 .prod .titlebar span      { }
-.titlebar span.mainHeader { padding: 10px 16px 10px 10px; font-family: 'Roboto Condensed', sans-serif !important; font-size: 4.5em !important; }
+.titlebar span.mainHeader { padding: 10px 16px 10px 10px; font-family: 'Roboto Condensed', sans-serif !important; font-size: 4.4em !important; }
 .titlebar img.console     { margin-right: 6px; height: 58px; }
 .titlebar .header         { float: left; padding-top:0px; height: 65px; }
 .titlebar .region         { float: left; margin: 0 7px 0 0; }
