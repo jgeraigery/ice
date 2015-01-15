@@ -68,10 +68,10 @@ environments {
     production {
     }
     development {
-        grails.serverURL = "https://billing-beta.grid.weather.com/${appName}"
+        grails.serverURL = "http://localhost:8080/${appName}"
     }
     test {
-        grails.serverURL = "https://billing-beta.grid.weather.com/${appName}"
+        grails.serverURL = "http://localhost:8080/${appName}"
     }
 
 }
