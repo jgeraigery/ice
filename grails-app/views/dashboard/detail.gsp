@@ -20,7 +20,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="main"/>
-  <title>Aws Usage Detail</title>
+  <title>Billing Dashboard: Usage Detail</title>
 </head>
 <body>
 <div class="" style="margin: auto; {{getBodyWidth('width: 1652px;')}} padding: 20px 30px"  ng-controller="detailCtrl">

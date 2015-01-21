@@ -20,7 +20,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="main"/>
-  <title>Aws Usage Breakdown</title>
+  <title>Billing Dashboard: Usage Breakdown</title>
 </head>
 <body>
 <div class="" style="margin: 20px 30px;" ng-controller="breakdownCtrl">
