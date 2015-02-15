@@ -341,7 +341,7 @@ public class BillingFileProcessor extends Poller {
         }
         // TODO: Remove
         logger.info("reservationBorrowers debug!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        for (Map.Entry<Account, List<Account>> entry : map.entrySet()) {
+        for (Map.Entry<Account, List<Account>> entry : reservationBorrowers.entrySet()) {
             Account acc = entry.getKey();
             logger.info("Account: ${acc.id} ${acc.name}");
             List<Account> accList = entry.getValue();
