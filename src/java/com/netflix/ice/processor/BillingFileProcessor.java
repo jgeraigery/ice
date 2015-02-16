@@ -310,7 +310,7 @@ public class BillingFileProcessor extends Poller {
         logger.info("Processing reservations...");
         if (config.reservationService.getTagGroups(utilization).size() == 0) {
             //TODO: Remove
-            logger.info("Utilization " + utilization.toString() + " size is 0, skipping...");
+            logger.info("Utilization " + utilization + " size is 0, skipping...");
             return;
         }
 
@@ -322,13 +322,13 @@ public class BillingFileProcessor extends Poller {
         Map<Account, List<Account>> reservationBorrowers = Maps.newHashMap();
         for (Account account: reservationAccounts.keySet()) {
             //TODO: Remove
-            logger.info("Reservation account id: " + account.id.toString());
-            logger.info("Reservation account name: " + account.name.toString());
+            logger.info("Reservation account id: " + account.id);
+            logger.info("Reservation account name: " + account.name);
             List<Account> list = reservationAccounts.get(account);
             for (Account borrowingAccount: list) {
                 //TODO: Remove
-                logger.info("Borrowing account id: " + borrowingAccount.id.toString());
-                logger.info("Reservation account name: " + borrowingAccount.name.toString());
+                logger.info("Borrowing account id: " + borrowingAccount.id);
+                logger.info("Reservation account name: " + borrowingAccount.name);
                 if (borrowingAccount.name.equals(account.name))
                     continue;
                 List<Account> from = reservationBorrowers.get(borrowingAccount);
@@ -343,10 +343,10 @@ public class BillingFileProcessor extends Poller {
         logger.info("reservationBorrowers debug!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         for (Map.Entry<Account, List<Account>> entry : reservationBorrowers.entrySet()) {
             Account acc = entry.getKey();
-            logger.info("Account: " + acc.id.toString() + " " +  acc.name.toString());
+            logger.info("Account: " + acc.id + " " +  acc.name);
             List<Account> accList = entry.getValue();
             for(Account accL : accList) {
-              System.out.println("Account to borrow from: " + accL.id.toString() + " " + accL.name.toString());
+              System.out.println("Account to borrow from: " + accL.id + " " + accL.name);
             }
         }
 
@@ -356,7 +356,7 @@ public class BillingFileProcessor extends Poller {
         Set<TagGroup> toMarkOwners = Sets.newTreeSet();
         for (TagGroup tagGroup: config.reservationService.getTagGroups(utilization)) {
             //TODO: Remove
-            logger.info("usageData.getNum() = " + usageData.getNum().toString());
+            logger.info("usageData.getNum() = " + usageData.getNum());
             for (int i = 0; i < usageData.getNum(); i++) {
 
                 Map<TagGroup, Double> usageMap = usageData.getData(i);
@@ -364,20 +364,20 @@ public class BillingFileProcessor extends Poller {
 
                 Double existing = usageMap.get(tagGroup);
                 //TODO: Remove
-                logger.info("1) existing = " + existing.toString());
+                logger.info("1) existing = " + existing);
                 double value = existing == null ? 0 : existing;
                 //TODO: Remove
-                logger.info("2) value = " + value.toString());
+                logger.info("2) value = " + value);
                 ReservationService.ReservationInfo reservation = config.reservationService.getReservation(startMilli + i * AwsUtils.hourMillis, tagGroup, utilization);
                 double reservedUsed = Math.min(value, reservation.capacity);
                 double reservedUnused = reservation.capacity - reservedUsed;
                 double bonusReserved = value > reservation.capacity ? value - reservation.capacity : 0;
                 //TODO: Remove
-                logger.info("3) reservedUsed = " + reservedUsed.toString());
+                logger.info("3) reservedUsed = " + reservedUsed);
                 //TODO: Remove
-                logger.info("4) reservedUnused = " + reservedUnused.toString());
+                logger.info("4) reservedUnused = " + reservedUnused);
                 //TODO: Remove
-                logger.info("5) bonusReserved = " + bonusReserved.toString());
+                logger.info("5) bonusReserved = " + bonusReserved);
 
                 if (reservedUsed > 0 || existing != null) {
                     usageMap.put(tagGroup, reservedUsed);
@@ -412,7 +412,7 @@ public class BillingFileProcessor extends Poller {
         Set<TagGroup> toMarkBorrowing = Sets.newTreeSet();
         for (TagGroup tagGroup: usageData.getTagGroups()) {
             //TODO: Remove
-            logger.info("a) !toMarkOwners.contains(tagGroup) " + !toMarkOwners.contains(tagGroup).toString());
+            logger.info("a) !toMarkOwners.contains(tagGroup) " + !toMarkOwners.contains(tagGroup));
             if (tagGroup.resourceGroup == null &&
                 tagGroup.product == Product.ec2_instance &&
                 (tagGroup.operation == Operation.getReservedInstances(utilization) && !toMarkOwners.contains(tagGroup) ||
@@ -426,7 +426,7 @@ public class BillingFileProcessor extends Poller {
         //TODO: Remove
         logger.info("-----------------------------------------------");
         //TODO: Remove
-        logger.info("toMarkBorrowing size == " + toMarkBorrowing.size().toString());
+        logger.info("toMarkBorrowing size == " + toMarkBorrowing.size());
         for (TagGroup tagGroup: toMarkBorrowing) {
             for (int i = 0; i < usageData.getNum(); i++) {
 
@@ -435,7 +435,7 @@ public class BillingFileProcessor extends Poller {
 
                 //TODO: Remove
                 logger.info("???????");
-                logger.info("borrowing... i = " + i.toString());
+                logger.info("borrowing... i = " + i);
                 logger.info("???????");
                 borrow(i, startMilli + i * AwsUtils.hourMillis, usageMap, costMap,
                        reservationBorrowers.get(tagGroup.account), tagGroup, utilization, reservationOwners.contains(tagGroup.account));
