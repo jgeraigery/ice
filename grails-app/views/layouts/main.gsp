@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="${resource(dir: 'css/ui-lightness', file: 'jquery-ui-1.10.3.custom.min.css')}"/>
   <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}"/>
   <link rel='stylesheet' href='${resource(dir: 'css', file: 'roboto.css')}'/>
+  <link rel="icon" type="image/png" href="images/grid_logo_g.png" >
   <g:layoutHead/>
 </head>
 <body class="nactest" ng-controller="mainCtrl">
