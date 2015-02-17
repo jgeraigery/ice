@@ -342,6 +342,8 @@ public class BasicReservationService extends Poller implements ReservationServic
                 if (time >= reservation.start && time < reservation.end) {
                     count += reservation.count;
                     Ec2InstanceReservationPrice.Key key = new Ec2InstanceReservationPrice.Key(tagGroup.region, tagGroup.usageType);
+                    // TODO: Remove
+                    logger.error("ReservationPriceKey == " + key);
                     Ec2InstanceReservationPrice ec2Price = ec2InstanceReservationPrices.get(utilization).get(key);
                     if (ec2Price != null) { // remove this...
                         upfrontAmortized += reservation.count * ec2Price.upfrontPrice.getPrice(reservation.start).getUpfrontAmortized(reservation.start, term, tier);
