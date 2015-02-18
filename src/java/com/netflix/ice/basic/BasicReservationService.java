@@ -153,8 +153,14 @@ public class BasicReservationService extends Poller implements ReservationServic
                 token = offers.getNextToken();
 
                 for (ReservedInstancesOffering offer: offers.getReservedInstancesOfferings()) {
-                    if (offer.getProductDescription().indexOf("Amazon VPC") >= 0)
+                    if (offer.getProductDescription().indexOf("Amazon VPC") >= 0) {
+                        // TODO: DEBUG REMOVE
+                        logger.info("skipping offer: " + offer.toString());
                         continue;
+                    } else {
+                      // TODO: DEBUG REMOVE
+                      logger.info("offer: " + offer.toString());
+                    }
                     ReservationUtilization utilization = ReservationUtilization.get(offer.getOfferingType());
                     Ec2InstanceReservationPrice.ReservationPeriod term = offer.getDuration() / 24 / 3600 > 366 ?
                             Ec2InstanceReservationPrice.ReservationPeriod.threeyear : Ec2InstanceReservationPrice.ReservationPeriod.oneyear;
@@ -342,14 +348,18 @@ public class BasicReservationService extends Poller implements ReservationServic
                 if (time >= reservation.start && time < reservation.end) {
                     count += reservation.count;
                     Ec2InstanceReservationPrice.Key key = new Ec2InstanceReservationPrice.Key(tagGroup.region, tagGroup.usageType);
-                    // TODO: Remove
-                    logger.error("ReservationPriceKey == " + key);
                     Ec2InstanceReservationPrice ec2Price = ec2InstanceReservationPrices.get(utilization).get(key);
                     if (ec2Price != null) { // remove this...
                         upfrontAmortized += reservation.count * ec2Price.upfrontPrice.getPrice(reservation.start).getUpfrontAmortized(reservation.start, term, tier);
                         houlyCost += reservation.count * ec2Price.hourlyPrice.getPrice(reservation.start).getPrice(tier);
                     }
                     else {
+                        // TODO: Remove --  DEBUGGING
+                        logger.info("---------------------------------------------");
+                        logger.info("ReservationPriceKey == " + key);
+                        logger.info("utilization == " + utilization);
+                      logger.info("---------------------------------------------");
+                        // original log
                         logger.error("Not able to find reservation price for " + key);
                     }
                 }
