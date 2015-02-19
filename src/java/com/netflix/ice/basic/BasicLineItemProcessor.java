@@ -93,12 +93,16 @@ public class BasicLineItemProcessor implements LineItemProcessor {
             StringUtils.isEmpty(items[usageTypeIndex]) ||
             StringUtils.isEmpty(items[operationIndex]) ||
             StringUtils.isEmpty(items[usageQuantityIndex]) ||
-            StringUtils.isEmpty(items[costIndex]))
+            StringUtils.isEmpty(items[costIndex])) {
+            logger.error("1a) ignoring item: " + items.toString());
             return Result.ignore;
+        }
 
         Account account = config.accountService.getAccountById(items[accountIdIndex]);
-        if (account == null)
+        if (account == null) {
+            logger.error("1b) ignoring item: " + items.toString());
             return Result.ignore;
+        }
 
         double usageValue = Double.parseDouble(items[usageQuantityIndex]);
         double costValue = Double.parseDouble(items[costIndex]);
@@ -145,8 +149,10 @@ public class BasicLineItemProcessor implements LineItemProcessor {
             result = processRds(usageType);
         }
 
-        if (result == Result.ignore || result == Result.delay)
+        if (result == Result.ignore || result == Result.delay) {
+            logger.error("1c) ignoring item: " + items.toString());
             return result;
+        }
 
         if (usageType.name.startsWith("TimedStorage-ByteHrs"))
             result = Result.daily;
