@@ -225,8 +225,10 @@ public class BillingFileProcessor extends Poller {
             }
 
             // now get reservation capacity to calculate upfront and un-used cost
-            for (Ec2InstanceReservationPrice.ReservationUtilization utilization: Ec2InstanceReservationPrice.ReservationUtilization.values())
-                processReservations(utilization);
+            for (Ec2InstanceReservationPrice.ReservationUtilization utilization: Ec2InstanceReservationPrice.ReservationUtilization.values()) {
+                logger.info("!!TWC: Skipping processing reservations for utilization " + utilization);
+                // processReservations(utilization);
+            }
 
             if (hasTags && config.resourceService != null)
                 config.resourceService.commit();
