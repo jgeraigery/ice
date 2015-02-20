@@ -369,7 +369,9 @@ public class BasicLineItemProcessor implements LineItemProcessor {
         InstanceOs os = null;
 
         // first try to retrieve region info
-        Region region = checkForRegionShortName(usageTypeStr);
+        int index = usageTypeStr.indexOf("-");
+        String regionShortName = checkForRegionShortName(usageTypeStr);
+        Region region = regionShortName.isEmpty() ? null : Region.getRegionByShortName(regionShortName);
         if (region != null) {
             usageTypeStr = usageTypeStr.substring(index+1);
         }
