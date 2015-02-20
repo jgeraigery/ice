@@ -469,7 +469,7 @@ public class BasicLineItemProcessor implements LineItemProcessor {
             logger.info("Zone not found, will default to zone 'a' for region: " + region.name);
             return Zone.getZone(region.name + "a", region);
         }
-        return null;
+        return zone;
     }
 
     private InstanceOs getInstanceOs(String operationStr) {
