@@ -128,7 +128,7 @@ public class BasicLineItemProcessor implements LineItemProcessor {
         Zone zone = Zone.getZone(items[zoneIndex], reformedMetaData.region);
 
         // TWC: @Ckelner - Hack to get zone where region has shortname and zone is empty in csv line item
-        if(checkForRegionShortName(items[usageTypeIndex]).isEmpty()) {
+        if(!(checkForRegionShortName(items[usageTypeIndex]).isEmpty())) {
           zone = getEmptyZoneFromRegion(reformedMetaData.region, zone);
         }
 
