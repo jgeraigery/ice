@@ -489,7 +489,6 @@ public class BillingFileProcessor extends Poller {
         map.put(tagGroup, existedV == null ? v : existedV + v);
     }
 
-
     private void archiveSummary(Map<Product, ReadWriteData> dataMap, String prefix) throws Exception {
 
         DateTime monthDateTime = new DateTime(startMilli, DateTimeZone.UTC);
