@@ -466,6 +466,7 @@ public class BasicLineItemProcessor implements LineItemProcessor {
      */
     private String getEmptyZoneFromRegion(Region region, Zone zone) {
         if(zone == null) {
+            logger.info("Zone not found, will default to zone 'a' for region: " + region.name);
             return Zone.getZone(region.name + "a", region);
         }
     }
