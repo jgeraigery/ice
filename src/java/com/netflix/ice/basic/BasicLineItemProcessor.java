@@ -129,7 +129,7 @@ public class BasicLineItemProcessor implements LineItemProcessor {
 
         // TWC: @Ckelner - Hack to get zone where region has shortname and zone is empty in csv line item
         if(checkForRegionShortName(items[usageTypeIndex])) {
-          zone = getEmptyZoneFromRegion(zone, reformedMetaData.region);
+          zone = getEmptyZoneFromRegion(reformedMetaData.region, zone);
         }
 
         int startIndex = (int)((millisStart - startMilli)/ AwsUtils.hourMillis);
@@ -464,9 +464,9 @@ public class BasicLineItemProcessor implements LineItemProcessor {
     "Estimated","123456789",   "987654321",    "LineItem","400000000223405011","Amazon Elastic Compute Cloud","3207476",              ,            ,"EU-HeavyUsage:r3.large","RunInstances",,                "Y",             "USD 0.0323 hourly fee per Linux/UNIX (Amazon VPC), r3.large instance (1488.0 hours purchased, 1488.0 hours used)",...
     So where this occurs, we default to the "a" zone of a given region.
      */
-    private String getEmptyZoneFromRegion(String region, String zone) {
+    private String getEmptyZoneFromRegion(Region region, Zone zone) {
         if(zone == null) {
-            return region + "a";
+            return Zone.getZone(region.name + "a", region);
         }
     }
 
