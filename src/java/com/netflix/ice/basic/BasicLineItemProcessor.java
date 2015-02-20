@@ -465,7 +465,7 @@ public class BasicLineItemProcessor implements LineItemProcessor {
      */
     private String getEmptyZoneFromRegion(String region, String zone) {
       if(zone == null) {
-        return region + "a"
+        return region + "a";
       }
     }
 
