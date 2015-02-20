@@ -152,6 +152,11 @@ public class BasicLineItemProcessor implements LineItemProcessor {
 
         if (result == Result.ignore || result == Result.delay) {
             logger.error("1c) ignoring item: " + Arrays.toString(items));
+            if (result == Result.ignore) {
+               logger.error("1c) result = Result.ignore");
+            } else {
+              logger.error("1c) result = Result.delay");
+            }
             return result;
         }
 
