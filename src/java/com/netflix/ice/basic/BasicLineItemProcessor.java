@@ -452,8 +452,8 @@ public class BasicLineItemProcessor implements LineItemProcessor {
     }
 
     private String checkForRegionShortName(String usageTypeStr) {
-      int index = usageTypeStr.indexOf("-");
-      return index > 0 ? usageTypeStr.substring(0, index) : null;
+        int index = usageTypeStr.indexOf("-");
+        return index > 0 ? usageTypeStr.substring(0, index) : null;
     }
 
     /*
@@ -464,9 +464,9 @@ public class BasicLineItemProcessor implements LineItemProcessor {
     So where this occurs, we default to the "a" zone of a given region.
      */
     private String getEmptyZoneFromRegion(String region, String zone) {
-      if(zone == null) {
-        return region + "a";
-      }
+        if(zone == null) {
+            return region + "a";
+        }
     }
 
     private InstanceOs getInstanceOs(String operationStr) {
