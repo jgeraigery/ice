@@ -332,7 +332,7 @@ public class BillingFileProcessor extends Poller {
         // first mark owner accounts
         Set<TagGroup> toMarkOwners = Sets.newTreeSet();
         for (TagGroup tagGroup: config.reservationService.getTagGroups(utilization)) {
-
+          
             for (int i = 0; i < usageData.getNum(); i++) {
 
                 Map<TagGroup, Double> usageMap = usageData.getData(i);
@@ -439,7 +439,6 @@ public class BillingFileProcessor extends Poller {
         Double existedV = map.get(tagGroup);
         map.put(tagGroup, existedV == null ? v : existedV + v);
     }
-
 
     private void archiveSummary(Map<Product, ReadWriteData> dataMap, String prefix) throws Exception {
 
