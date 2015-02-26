@@ -95,13 +95,11 @@ public class BasicLineItemProcessor implements LineItemProcessor {
             StringUtils.isEmpty(items[operationIndex]) ||
             StringUtils.isEmpty(items[usageQuantityIndex]) ||
             StringUtils.isEmpty(items[costIndex])) {
-            logger.error("1a) ignoring item: " + Arrays.toString(items));
             return Result.ignore;
         }
 
         Account account = config.accountService.getAccountById(items[accountIdIndex]);
         if (account == null) {
-            logger.error("1b) ignoring item: " + Arrays.toString(items));
             return Result.ignore;
         }
 
@@ -156,12 +154,6 @@ public class BasicLineItemProcessor implements LineItemProcessor {
         }
 
         if (result == Result.ignore || result == Result.delay) {
-            logger.error("1c) ignoring item: " + Arrays.toString(items));
-            if (result == Result.ignore) {
-               logger.error("1c) result = Result.ignore");
-            } else {
-              logger.error("1c) result = Result.delay");
-            }
             return result;
         }
 
