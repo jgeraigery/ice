@@ -347,9 +347,9 @@ public class BasicReservationService extends Poller implements ReservationServic
                         upfrontAmortized += reservation.count * ec2Price.upfrontPrice.getPrice(reservation.start).getUpfrontAmortized(reservation.start, term, tier);
                         houlyCost += reservation.count * ec2Price.hourlyPrice.getPrice(reservation.start).getPrice(tier);
                     }
-                }
-                else {
-                    logger.error("Not able to find reservation price for " + key);
+                    else {
+                      logger.error("Not able to find reservation price for " + key);
+                    }
                 }
             }
         }
