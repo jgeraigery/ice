@@ -170,9 +170,9 @@ public class BasicReservationService extends Poller implements ReservationServic
                             }
                         }
                     }
+                    UsageType usageType = getUsageType(offer.getInstanceType(), offer.getProductDescription());
                     Zone zone = Zone.getZone(offer.getAvailabilityZone());
                     if( zone != null ) {
-                        UsageType usageType = getUsageType(offer.getInstanceType(), offer.getProductDescription());
                         hasNewPrice = setPrice(utilization, currentTime, zone.region, usageType, offer.getFixedPrice(), hourly)||
                           hasNewPrice;
 
