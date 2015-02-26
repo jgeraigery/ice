@@ -151,9 +151,8 @@ public class BasicLineItemProcessor implements LineItemProcessor {
             result = processRds(usageType);
         }
 
-        if (result == Result.ignore || result == Result.delay) {
+        if (result == Result.ignore || result == Result.delay)
             return result;
-        }
 
         if (usageType.name.startsWith("TimedStorage-ByteHrs"))
             result = Result.daily;
