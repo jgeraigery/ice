@@ -94,9 +94,8 @@ public class BasicLineItemProcessor implements LineItemProcessor {
             StringUtils.isEmpty(items[usageTypeIndex]) ||
             StringUtils.isEmpty(items[operationIndex]) ||
             StringUtils.isEmpty(items[usageQuantityIndex]) ||
-            StringUtils.isEmpty(items[costIndex])) {
+            StringUtils.isEmpty(items[costIndex]))
             return Result.ignore;
-        }
 
         Account account = config.accountService.getAccountById(items[accountIdIndex]);
         if (account == null) {
