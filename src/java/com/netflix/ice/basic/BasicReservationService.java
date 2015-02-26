@@ -348,7 +348,7 @@ public class BasicReservationService extends Poller implements ReservationServic
                         houlyCost += reservation.count * ec2Price.hourlyPrice.getPrice(reservation.start).getPrice(tier);
                     }
                     else {
-                      logger.error("Not able to find reservation price for " + key);
+                        logger.error("Not able to find reservation price for " + key);
                     }
                 }
             }
