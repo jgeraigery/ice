@@ -174,7 +174,7 @@ public class BasicReservationService extends Poller implements ReservationServic
                     Zone zone = Zone.getZone(offer.getAvailabilityZone());
                     if( zone != null ) {
                         hasNewPrice = setPrice(utilization, currentTime, zone.region, usageType, offer.getFixedPrice(), hourly)||
-                          hasNewPrice;
+                            hasNewPrice;
 
                         logger.info("Setting RI price for " + zone.region + " " + utilization + " " + usageType + " " + offer.getFixedPrice() + " " + hourly);
                     } else {
