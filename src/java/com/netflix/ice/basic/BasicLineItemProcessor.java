@@ -98,9 +98,8 @@ public class BasicLineItemProcessor implements LineItemProcessor {
             return Result.ignore;
 
         Account account = config.accountService.getAccountById(items[accountIdIndex]);
-        if (account == null) {
+        if (account == null)
             return Result.ignore;
-        }
 
         double usageValue = Double.parseDouble(items[usageQuantityIndex]);
         double costValue = Double.parseDouble(items[costIndex]);
