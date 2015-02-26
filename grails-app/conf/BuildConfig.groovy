@@ -33,6 +33,11 @@ grails.project.dependency.resolution = {
         grailsCentral()
         mavenCentral()
 
+        mavenRepo "http://snapshots.repository.codehaus.org"
+        mavenRepo "http://repository.codehaus.org"
+        mavenRepo "http://download.java.net/maven/2/"
+        mavenRepo "http://repository.jboss.com/maven2/"
+
         // Optional custom repository for dependencies.
         Closure internalRepo = {
             String repoUrl = 'http://artifacts/ext-releases-local'
