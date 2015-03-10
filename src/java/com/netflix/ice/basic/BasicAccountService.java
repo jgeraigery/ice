@@ -23,6 +23,7 @@ import com.netflix.ice.tag.Zone;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.NullPointerException;
 import java.util.List;
 import java.util.Map;
 
@@ -60,7 +61,11 @@ public class BasicAccountService implements AccountService {
 
     public Account getAccountByName(String accountName) {
         Account account = accountsByName.get(accountName);
-        account.setAccountId(accountsById.get(accountName).id);
+        try {
+            account.setAccountId(accountsById.get(accountName).id);
+        } catch(NullPointerException npe) {
+            logger.info("Unable to get account Id for account: " + accountName);
+        }
         // for accounts that were not mapped to names in ice.properties (ice.account.xxx), this check will make sure that
         // data/tags are updated properly once the mapping is established in ice.properties
         if (account == null) {
