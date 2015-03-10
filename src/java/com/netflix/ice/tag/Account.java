@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Account extends Tag {
-    public final String id;
+    private String id;
 
     public Account(String accountId, String accountName) {
         super(accountName);
