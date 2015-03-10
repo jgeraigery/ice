@@ -18,14 +18,10 @@
 package com.netflix.ice.tag;
 
 public class Account extends Tag {
-    public String id;
+    public final String id;
 
     public Account(String accountId, String accountName) {
         super(accountName);
         this.id = accountId;
-    }
-
-    public void setAccountId(String id) {
-      this.id = id;
     }
 }
