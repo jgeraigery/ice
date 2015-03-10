@@ -72,6 +72,9 @@ class DashboardController {
         TagGroupManager tagGroupManager = getManagers().getTagGroupManager(null);
         Collection<Account> data = tagGroupManager == null ? [] : tagGroupManager.getAccounts(new TagLists());
 
+        log.info "data = " + data
+        log.info "data as JSON = " + ( data as JSON )
+
         def result = [status: 200, data: data]
         render result as JSON
     }
