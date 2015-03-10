@@ -19,6 +19,7 @@ package com.netflix.ice
 
 import grails.converters.JSON
 import com.netflix.ice.tag.Tag
+import com.netflix.ice.tag.Account
 import com.netflix.ice.reader.ApplicationGroup
 
 class JSONConverter {
@@ -26,6 +27,9 @@ class JSONConverter {
     static void register() {
         JSON.registerObjectMarshaller(Tag) { Tag it ->
             return [name: it.name]
+        }
+        JSON.registerObjectMarshaller(Account) { Account it ->
+          return [name: it.name, id: it.id]
         }
         JSON.registerObjectMarshaller(ApplicationGroup) { ApplicationGroup appgroup ->
             def result = [name: appgroup.name, owner: appgroup.owner, data: [:]]
