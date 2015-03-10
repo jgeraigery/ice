@@ -70,6 +70,7 @@ public class BasicAccountService implements AccountService {
             account = new Account(accountName, accountName);
             accountsByName.put(account.name, account);
             accountsById.put(account.id, account);
+            logger.info("created account " + accountName + ".");
         }
         return account;
     }
