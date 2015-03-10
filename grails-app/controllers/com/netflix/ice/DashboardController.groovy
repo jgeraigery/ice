@@ -73,7 +73,9 @@ class DashboardController {
         Collection<Account> data = tagGroupManager == null ? [] : tagGroupManager.getAccounts(new TagLists());
 
         def result = [status: 200, data: data]
-        render result as JSON
+        JSON.use('deep') {
+            render result as JSON
+        }
     }
 
     def getRegions = {
