@@ -17,11 +17,24 @@
  */
 package com.netflix.ice.tag;
 
+import java.util.Map;
+import java.util.HashMap;
+
 public class Account extends Tag {
     public final String id;
 
     public Account(String accountId, String accountName) {
         super(accountName);
         this.id = accountId;
+    }
+
+    @Override
+    public String toString() {
+        // this is so /ice/dashboard/getAccounts returns both id and account name
+        // making 'getAccounts' more useful
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("name", this.name);
+        map.put("id", this.id);
+        return map.toString();
     }
 }
