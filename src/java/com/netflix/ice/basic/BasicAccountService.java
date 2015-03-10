@@ -60,7 +60,7 @@ public class BasicAccountService implements AccountService {
 
     public Account getAccountByName(String accountName) {
         Account account = accountsByName.get(accountName);
-        account.id = accountsById.get(accountName).id;
+        account.setAccountId(accountsById.get(accountName).id);
         // for accounts that were not mapped to names in ice.properties (ice.account.xxx), this check will make sure that
         // data/tags are updated properly once the mapping is established in ice.properties
         if (account == null) {
