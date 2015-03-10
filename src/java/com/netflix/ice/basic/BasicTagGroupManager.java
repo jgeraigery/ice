@@ -139,6 +139,7 @@ public class BasicTagGroupManager extends Poller implements TagGroupManager {
         for (TagGroup tagGroup: tagGroupsInRange) {
             if (tagLists.contains(tagGroup))
                 result.add(tagGroup.account);
+                logger.debug("adding account: " + tagGroup.account.id + ":" + tagGroup.account.name);
         }
 
         return result;
