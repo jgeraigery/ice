@@ -32,39 +32,43 @@ public abstract class Poller {
     private CountDownLatch threadDoneSignal;
 
     private void doWork(int initialDelaySec, int delaySec, boolean fixedRate) {
-        logger.info("poller starting...");
-        boolean first = true;
-        long sleepTime = delaySec * 1000L;
-        while (true) {
-            try {
-                if (first) {
-                    if (initialDelaySec > 0) {
-                        Thread.sleep(initialDelaySec * 1000L);
+        try{
+            logger.info("poller starting...");
+            boolean first = true;
+            long sleepTime = delaySec * 1000L;
+            while (true) {
+                try {
+                    if (first) {
+                        if (initialDelaySec > 0) {
+                            Thread.sleep(initialDelaySec * 1000L);
+                        }
+                        first = false;
                     }
-                    first = false;
-                }
-                else if (sleepTime > 0)
-                    Thread.sleep(sleepTime);
+                    else if (sleepTime > 0)
+                        Thread.sleep(sleepTime);
 
-                long startMillis = System.currentTimeMillis();
-                poll();
-                sleepTime = fixedRate ? delaySec * 1000L - (System.currentTimeMillis() - startMillis) : delaySec * 1000L;
+                    long startMillis = System.currentTimeMillis();
+                    poll();
+                    sleepTime = fixedRate ? delaySec * 1000L - (System.currentTimeMillis() - startMillis) : delaySec * 1000L;
+                }
+                catch (InterruptedException e) {
+                    break;
+                }
+                catch (InterruptedIOException e) {
+                    break;
+                }
+                catch (ClosedByInterruptException e) {
+                    break;
+                }
+                catch (Exception e) {
+                    logger.error("Error polling", e);
+                }
             }
-            catch (InterruptedException e) {
-                break;
-            }
-            catch (InterruptedIOException e) {
-                break;
-            }
-            catch (ClosedByInterruptException e) {
-                break;
-            }
-            catch (Exception e) {
-                logger.error("Error polling", e);
-            }
+            threadDoneSignal.countDown();
+            logger.info("poller stopping.");
+        } catch (Exception e) {
+            logger.error("Error polling", e);
         }
-        threadDoneSignal.countDown();
-        logger.info("poller stopping.");
     }
 
     protected abstract void poll() throws Exception;
