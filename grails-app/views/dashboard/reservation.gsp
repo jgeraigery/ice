@@ -20,7 +20,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="main"/>
-  <title>Aws Usage Reservation</title>
+  <title>Billing Dashboard: Usage Reservation</title>
 </head>
 <body>
 <div class="" style="margin: auto; width: 1600px; padding: 20px 30px" ng-controller="reservationCtrl">
@@ -32,9 +32,6 @@
       <td>Account</td>
       <td ng-show="1-showZones">Region</td>
       <td ng-show="showZones">Zone</td>
-      <td>Product</td>
-      <td>Operation</td>
-      <td>UsageType</td>
     </tr>
     <tr>
       <td>
@@ -83,6 +80,13 @@
         <select ng-model="selected_zones" ng-options="a.name for a in zones | filter:filter_zones" ng-change="zonesChanged()" multiple="multiple" class="metaRegions metaSelect"></select>
         <br><input ng-model="filter_zones" type="text" class="metaFilter" placeholder="filter">
       </td>
+    </tr>
+    <tr>
+      <td>Product</td>
+      <td>Operation</td>
+      <td>UsageType</td>
+    </tr>
+    <tr>
       <td>
         <select ng-model="selected_products" ng-options="a.name for a in products | filter:filter_products" ng-change="productsChanged()" multiple="multiple" class="metaProducts metaSelect"></select>
         <br><input ng-model="filter_products" type="text" class="metaFilter" placeholder="filter">

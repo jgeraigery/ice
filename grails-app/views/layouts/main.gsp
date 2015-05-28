@@ -21,19 +21,21 @@
 <!DOCTYPE html>
 <html ng-app="ice">
 <head>
-  <title><g:layoutTitle default="${ReaderConfig.getInstance().companyName} AWS Usage Dashboard"/></title>
+  <title><g:layoutTitle default="Grid Billing Dashboard"/></title>
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   <link rel="stylesheet" href="${resource(dir: 'css/ui-lightness', file: 'jquery-ui-1.10.3.custom.min.css')}"/>
   <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}"/>
+  <link rel='stylesheet' href='${resource(dir: 'css', file: 'roboto.css')}'/>
+  <link rel="icon" type="image/png" href="images/grid_logo_g.png" >
   <g:layoutHead/>
 </head>
 <body class="nactest" ng-controller="mainCtrl">
   <div class="titlebar" ng-show="!graphOnly()">
-    <div class="header" style="padding-top:15px; height:43px">
+    <div class="header">
       <a href="${resource(dir: '/')}">
         <span class="mainHeader">
-          ${ReaderConfig.getInstance().companyName} AWS Usage Dashboard
+          Grid Billing Dashboard
         </span>
       </a>
     </div>

@@ -33,6 +33,13 @@ grails.project.dependency.resolution = {
         grailsCentral()
         mavenCentral()
 
+        mavenRepo "http://snapshots.repository.codehaus.org"
+        mavenRepo "http://repository.codehaus.org"
+        mavenRepo "http://download.java.net/maven/2/"
+        mavenRepo "http://repository.jboss.com/maven2/"
+        mavenRepo "http://repo.grails.org/grails/repo/"
+        mavenRepo "https://repo.grails.org/grails/plugins"
+
         // Optional custom repository for dependencies.
         Closure internalRepo = {
             String repoUrl = 'http://artifacts/ext-releases-local'
@@ -114,5 +121,7 @@ grails.project.dependency.resolution = {
 
     plugins {
         build ":tomcat:$grailsVersion"
+        build ":standalone:1.3"
+        compile ":standalone:1.3"
     }
 }

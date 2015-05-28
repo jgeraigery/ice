@@ -23,6 +23,7 @@ import com.netflix.ice.tag.Zone;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.NullPointerException;
 import java.util.List;
 import java.util.Map;
 
@@ -69,6 +70,7 @@ public class BasicAccountService implements AccountService {
             account = new Account(accountName, accountName);
             accountsByName.put(account.name, account);
             accountsById.put(account.id, account);
+            logger.info("created account " + accountName + ".");
         }
         return account;
     }

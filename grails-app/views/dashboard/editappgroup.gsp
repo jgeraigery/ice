@@ -20,7 +20,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="main"/>
-  <title>Edit Application Group</title>
+  <title>Billing Dashboard: Edit Application Group</title>
 </head>
 <body>
 <div class="" style="margin: auto; width: 1024px; padding: 20px 30px" ng-controller="editCtrl">

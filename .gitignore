@@ -1,0 +1,9 @@
+*.out
+ice.properties
+ice.properties.*
+target/
+web-app/WEB-INF/tld/
+work/
+
+.idea/*
+

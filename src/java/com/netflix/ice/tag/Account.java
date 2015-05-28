@@ -17,6 +17,9 @@
  */
 package com.netflix.ice.tag;
 
+import java.util.Map;
+import java.util.HashMap;
+
 public class Account extends Tag {
     public final String id;
 
@@ -24,4 +27,5 @@ public class Account extends Tag {
         super(accountName);
         this.id = accountId;
     }
+
 }

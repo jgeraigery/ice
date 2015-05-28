@@ -4,16 +4,16 @@ html * { margin: 0; }
 a, input     { outline: none; }
 p            { padding: 10px 0; }
 img          { border: none; }
-.titlebar a:link, .titlebar a:visited, .titlebar a:hover { color: #FFF !important; }
-.titlebar                 { background-color: #000; color: #FFF; padding: 0 0 0 5px; height: 58px; clear: both; min-width: 885px; }
+.titlebar a:link, .titlebar a:visited, .titlebar a:hover { color: #ebebeb !important; }
+.titlebar                 { background-color: #4e5d6c; color: #ebebeb; padding: 0 0 0 5px; height: 65px; clear: both; min-width: 885px; margin-top: -5px; }
 .prod .titlebar,
 .prod .titlebar .cmc,
-.prod .titlebar .region   { background-color: #E9231B; }
-.titlebar span            { text-shadow: #E9231B 3px 3px 2px; font-size: 24px; font-family: helvetica, verdana, arial, sans-serif; }
-.prod .titlebar span      { text-shadow: #000 4px 4px 2px; }
-.titlebar span.mainHeader { padding: 10px 16px 10px 10px; }
+.prod .titlebar .region   { background-color: #4e5d6c; }
+.titlebar span            { color: #ebebeb; font-size: 24px; font-family: helvetica, verdana, arial, sans-serif; }
+.prod .titlebar span      { }
+.titlebar span.mainHeader { padding: 10px 16px 10px 10px; font-family: 'Roboto Condensed', sans-serif !important; font-size: 4.4em !important; }
 .titlebar img.console     { margin-right: 6px; height: 58px; }
-.titlebar .header         { float: left; height: 58px; }
+.titlebar .header         { float: left; padding-top:0px; height: 65px; }
 .titlebar .region         { float: left; margin: 0 7px 0 0; }
 .titlebar .region form    { float: left; display: inline-block; vertical-align: top; padding: 5px 5px 0 0; }
 .titlebar .region img     { float: left; display: inline-block; }
@@ -329,9 +329,9 @@ div.grippie { background: #EEEEEE url(../images/grippie.png) no-repeat scroll ce
 .messageForIeUsers              { padding: 10px; color: blue; font-size: 13px; font-weight: bold; background-color: white; }
 .chromeFrameInstallDefaultStyle { width: 96%; height: 90%; border: 5px solid blue; z-index: 1000; left: 410px; top: 360px; }
 
-.metaAccounts {width: 115px}
+.metaAccounts {width: 215px}
 .metaRegions {width: 115px}
-.metaProducts {width: 110px}
+.metaProducts {width: 210px}
 .metaOperations {width: 230px}
 .metaUsageTypes {width: 230px}
 .metaResourceGroups {width: 450px}
